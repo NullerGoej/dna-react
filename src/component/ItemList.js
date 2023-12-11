@@ -63,6 +63,8 @@ const ItemList = () => {
     }
   };
 
+  // <button type="button" onClick={handleCreateItemClick}>Create Item</button>
+
   return (
     <>
       {loading && <p>Loading items...</p>}
@@ -79,7 +81,6 @@ const ItemList = () => {
             />
           ))}
           </div>
-          <button type="button" onClick={handleCreateItemClick}>Create Item</button>
         </>
       )}
 
