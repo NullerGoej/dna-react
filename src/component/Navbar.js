@@ -55,13 +55,13 @@ function Navbar() {
                         <div className="col-12">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link to="/" className={"nav-link text-decoration-none link-" + (url === "/" ? "light" : "secondary")} >Home</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/about" className={"nav-link text-decoration-none link-" + (url === "/about" ? "light" : "secondary")}>About</Link>
+                                    <Link to="/" className={"nav-link text-decoration-none link-" + (url === "/" ? "light" : "secondary")} >Hjem</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/shop" className={"nav-link text-decoration-none link-" + (url === "/shop" ? "light" : "secondary")}>Shop</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/about" className={"nav-link text-decoration-none link-" + (url === "/about" ? "light" : "secondary")}>Omkring Os</Link>
                                 </li>
                             </ul>
                         </div>

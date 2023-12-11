@@ -27,7 +27,7 @@ const ItemList = () => {
   };
 
 
-  const handleCreateItem = (state, action) => {
+  const handleCreateItemClick = (state, action) => {
     setCreateModalOpen(true);
   };
 
@@ -72,13 +72,13 @@ const ItemList = () => {
         <>
           {items.map((item) => (
             <Item
-              key={item.id}
+              key={item.item_id}
               {...item}
               onItemUpdate={handleUpdateItem}
               onItemDelete={handleDeleteItem}
             />
           ))}
-          <button onClick={() => dispatch(handleCreateItem())}>Create Item</button>
+          <button type="button" onClick={handleCreateItemClick}>Create Item</button>
         </>
       )}
 

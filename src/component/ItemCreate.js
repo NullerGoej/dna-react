@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {getItemCategoryById } from '../api';
+import {getAllItemCategories, getItemCategoryById} from '../api';
 
 
 const ItemCreateModal = ({ onClose, onSubmit }) => {
@@ -15,13 +15,31 @@ const ItemCreateModal = ({ onClose, onSubmit }) => {
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
 
+  // useEffect(() => {
+  //   // Fetch item categories when the component mounts
+  //   getItemCategoryById()
+  //     .then((data) => setCategories(data))
+  //     .catch((error) => console.error('Error fetching categories:', error))
+  //     .finally(() => setLoadingCategories(false));
+  // }, [getItemCategoryById]);
+
   useEffect(() => {
     // Fetch item categories when the component mounts
-    getItemCategoryById()
-      .then((data) => setCategories(data))
-      .catch((error) => console.error('Error fetching categories:', error))
-      .finally(() => setLoadingCategories(false));
-  }, [getItemCategoryById]);
+    const fetchCategories = async () => {
+      try {
+        const data = await getAllItemCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      } finally {
+        setLoadingCategories(false);
+      }
+    };
+  
+    fetchCategories();
+  }, []);
+  
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -90,9 +108,10 @@ const ItemCreateModal = ({ onClose, onSubmit }) => {
               <option value="" disabled>Loading categories...</option>
             ) : (
               categories.map((category) => (
-                <option key={category.category_id} value={category.category_name}>
-                  {category.category_name}
-                </option>
+                <option key={category.category_id} value={category.category_id}>
+                {category.category_name}
+              </option>
+              
               ))
             )}
           </select>
