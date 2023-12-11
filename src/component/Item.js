@@ -8,7 +8,7 @@ const Item = ({ title, price, image, item_id, description }) => {
   return (
     <div className="col-md-4 mb-4">
       <div className="card">
-        <img src={image} className="card-img-top" alt={title} />
+        <img src={image} className="card-img-top" alt={title} style={{objectFit: 'cover', aspectRatio: 1 / 1}} />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
@@ -18,7 +18,7 @@ const Item = ({ title, price, image, item_id, description }) => {
             onClick={() => dispatch(addItemToCart(item_id))}
             className="btn btn-success btn-block"
           >
-            Add to Cart
+            Tilføj til kurv
           </button>
         </div>
       </div>

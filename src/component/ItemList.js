@@ -8,7 +8,7 @@ const ItemList = () => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+  const [isCreateModalOpen, setCreateModalOpen] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -64,12 +64,12 @@ const ItemList = () => {
   };
 
   return (
-    <div>
-      <h2>Item List</h2>
+    <>
       {loading && <p>Loading items...</p>}
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
         <>
+          <div className="row">
           {items.map((item) => (
             <Item
               key={item.item_id}
@@ -78,19 +78,22 @@ const ItemList = () => {
               onItemDelete={handleDeleteItem}
             />
           ))}
+          </div>
           <button type="button" onClick={handleCreateItemClick}>Create Item</button>
         </>
       )}
 
       {/* Create Item Modal */}
       {isCreateModalOpen && (
+        <>
         <ItemCreateModal
           onClose={handleCloseModal}
           onSubmit={handleCreateItemSubmit}
           fetchCategories={getAllItemCategories}
         />
+        </>
       )}
-    </div>
+    </>
   );
 };
 
